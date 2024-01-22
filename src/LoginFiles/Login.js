@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import firebase from '../FirebaseFiles/firebase';
+import { useNavigate } from "react-router-dom";
 
 
 import Avatar from '@mui/material/Avatar';
@@ -13,6 +14,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Alert } from '@mui/material';
 
 
 
@@ -30,19 +32,18 @@ export default function SignIn() {
 
     };
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-
         try {
             await firebase.auth().signInWithEmailAndPassword(formData.email, formData.password);
-            console.log('Logged in successfully!');
+            Alert('Your UserName And Password Was Right Click On Ok To Login');
+            navigate("/dashboard");
+
         } catch (error) {
             console.error('Login error:', error.message);
+            alert("Invalid UserName Or Password");
         }
     };
 
