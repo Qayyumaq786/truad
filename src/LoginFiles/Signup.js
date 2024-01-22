@@ -6,17 +6,14 @@ import firebase from '../FirebaseFiles/firebase';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
 
 
 const defaultTheme = createTheme();
@@ -55,19 +52,21 @@ export default function SignUp() {
     }
 
     return (
-        // <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs" >
-                <CssBaseline />
+        
+            <Container component="main" maxWidth="xs" sx={{ boxShadow:"10px 10px 5px gray"}} >
+               
                 <Box
                     sx={{
                         marginTop: 15,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+                        padding:"15% 0%"
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
+                        <img src="https://media.licdn.com/dms/image/C4E0BAQGQTzZN8EqC9w/company-logo_200_200/0/1630642218004?e=1714003200&v=beta&t=eqAFTfpV4wyyrkNAdGjWuifp_6KR1JPfv91rCK1nssY" style={{height:"50px"}} alt="" />
+                       
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Sign up
@@ -144,6 +143,6 @@ export default function SignUp() {
                 </Box>
 
             </Container>
-        // </ThemeProvider>
+        
     );
 }

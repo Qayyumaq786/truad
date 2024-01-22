@@ -2,19 +2,14 @@
 
 import React, { useState } from 'react';
 import firebase from '../FirebaseFiles/firebase';
-// import '../LoginFiles/style.css';
 
-// import * as React from 'react';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -32,7 +27,7 @@ export default function SignIn() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-    
+
     };
 
     const handleSubmit = async (event) => {
@@ -52,22 +47,27 @@ export default function SignIn() {
     };
 
     return (
-        
-       <div >
-            <Container  component="main" maxWidth="xs">
-                <CssBaseline />
+
+        <div  >
+            <Container component="main" maxWidth="xs" sx={{ boxShadow: "10px 10px 5px gray" }}>
+               
                 <Box
                     sx={{
-                        marginTop: 20,
+                        marginTop: 15,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+                        padding: "15% 0%"
                     }}
                 >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <img src="https://media.licdn.com/dms/image/C4E0BAQGQTzZN8EqC9w/company-logo_200_200/0/1630642218004?e=1714003200&v=beta&t=eqAFTfpV4wyyrkNAdGjWuifp_6KR1JPfv91rCK1nssY" style={{ height: "50px" }} alt="" />
+
+                    </Avatar>
                     <h1 >
                         Welcome to TruAd
                     </h1>
-                    <Typography component="h1" variant="h5" sx={{marginTop:"10"}}>
+                    <Typography component="h1" variant="h5" sx={{ marginTop: "10" }}>
                         Sign in
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -95,7 +95,7 @@ export default function SignIn() {
                             value={formData.password}
                             onChange={handleChange}
                         />
-                       
+
                         <Button
                             type="submit"
                             fullWidth
@@ -115,6 +115,6 @@ export default function SignIn() {
                     </Box>
                 </Box>
             </Container>
-            </div>
+        </div>
     );
 }
