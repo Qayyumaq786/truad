@@ -3,8 +3,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box, Button, CardActionArea } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
+import { Box, Button, CardActionArea, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Avatar } from "@mui/material";
+// import Avatar from "@mui/material/Avatar";
 
 const users = [
   {
@@ -37,11 +37,65 @@ const users = [
   },
 ];
 
+
+
+
+
+
+
+const initialNewUserState = {
+  name: "",
+  id: "",
+  dec: "",
+  profileImg: "",
+};
+
 export default function UsersCom() {
+  const [newInput,setNewInput]=React.useState(initialNewUserState)
+  const [newUser, setNewUser] = React.useState(users);
+  const [isFormOpen, setIsFormOpen] = React.useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setNewInput((prevUser) => ({ ...prevUser, [name]: value }));
+  };
+
+  const handleAddNewUser = () => {
+    setIsFormOpen(true);
+  };
+
+  const handleSaveUser = () => {
+    // Check if required fields are filled
+    if (newInput.name.trim() === '' || newInput.id.trim() === '' || newInput.dec.trim() === '' || newInput.profileImg.trim() === '') {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    // Add the new user to the array
+    newUser.push(newInput);
+    setNewInput(initialNewUserState);
+    setIsFormOpen(false);
+  };
+
+  // Remove the new user to the array
+  const handleRemoveUser = (i) => {
+    // Create a new array with the user to be removed
+    console.log(i);
+    const updatedUsers = [...newUser];
+    updatedUsers.splice(i, 1);
+    console.log(updatedUsers);
+    setNewUser(updatedUsers);
+
+  };
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
+  };
   return (
+    <>
       <Box
         sx={{
-          marginTop:"20px",
+          marginTop: "20px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -49,10 +103,10 @@ export default function UsersCom() {
           gap: 2,
         }}
       >
-      <Button variant="contained">Add a New User</Button>
-        {users.map((e, i) => (
+        <Button variant="contained" onClick={handleAddNewUser}>Add a New User</Button>
+        {newUser.map((e, i) => (
           <Card
-          key={`user${i}`}
+            key={`user${i}`}
             sx={{
               width: "90%",
               bgcolor: "#989898",
@@ -88,11 +142,68 @@ export default function UsersCom() {
                 </CardContent>
               </Box>
               <Box sx={{ display: "flex", gap: 1 }}>
-                <Button variant="contained">remove</Button>
+                <Button variant="contained" onClick={() => handleRemoveUser(i)}>remove</Button>
               </Box>
             </CardActionArea>
           </Card>
         ))}
       </Box>
+
+
+
+      {/*New User Form */}
+      <Dialog open={isFormOpen} onClose={handleCloseForm}>
+        <DialogTitle>Add New User</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Please fill in the details for the new user.</DialogContentText>
+          <TextField
+            required
+            autoFocus
+            margin="dense"
+            id="name"
+            name="name"
+            label="User Name"
+            fullWidth
+            value={newUser.name}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            id="id"
+            name="id"
+            label="User ID"
+            fullWidth
+            value={newUser.id}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            id="dec"
+            name="dec"
+            label="User Description"
+            fullWidth
+            value={newUser.dec}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            id="profileImg"
+            name="profileImg"
+            label="Profile Image URL"
+            fullWidth
+            value={newUser.profileImg}
+            onChange={handleInputChange}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseForm}>Cancel</Button>
+          <Button onClick={handleSaveUser}>Save</Button>
+        </DialogActions>
+      </Dialog>
+
+    </>
   );
 }
