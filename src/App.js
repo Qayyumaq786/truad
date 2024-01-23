@@ -7,6 +7,7 @@ import  Dashboard  from '../src/component/Dashboard';
 import DashboardData from './component/DashboardData';
 import UsersCom from './component/UsersCom';
 import ProductsCom from './component/ProductsCom';
+import ProductsList from './component/ProductsList';
 
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path :"/dashboard/reports/",
         element:<DashboardData/>
+      },
+      {
+        path:"/dashboard/productList/",
+        element:<ProductsList/>
       }
      
       

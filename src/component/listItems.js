@@ -45,12 +45,14 @@ export const mainListItems = (
       <ListItemText primary="Reports" />
     </ListItem>
     </Link>
+    <Link style={{textDecoration:"none",color:"inherit"}} to={"/dashboard/productList/"}>
     <ListItem button>
       <ListItemIcon>
         <LayersIcon style={{ color: 'white', }} />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="Products" />
     </ListItem>
+    </Link>
   </div>
 );
 

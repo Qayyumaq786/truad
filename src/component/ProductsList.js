@@ -1,44 +1,40 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, Button, CardActionArea } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 
-const users = [
+const products = [
   {
-    name: "jone doe",
-    id: "abc1fnbhsjf111",
+    name: "products1",
     dec: " The subject looks into the distance, showcasing a poised demeanor perfect for professional profile pictures, business portfolios, or corporate websites.",
-    profileImg:
-      "https://wallpapers.com/images/high/professional-profile-pictures-2880-x-1920-7jvygpai7v9zkg2j.webp",
+    productImage:
+      "https://www.91-cdn.com/hub/wp-content/uploads/2022/12/Apple-Products-expected-to-launch-in-2023.png",
   },
   {
-    name: "Aditya",
-    id: "abc1fdhvbfd111",
+    name: "products2",
     dec: " The subject looks into the distance, showcasing a poised demeanor perfect for professional profile pictures, business portfolios, or corporate websites.",
-    profileImg:
-      "https://wallpapers.com/images/high/professional-profile-pictures-5472-x-3648-fnzog91drg7fwyv1.webp",
+    productImage:
+      "https://www.91-cdn.com/hub/wp-content/uploads/2023/01/HomePod-2nd-generation.jpg?tr=q-100",
   },
   {
-    name: "Ankit",
-    id: "abc111hfsg1",
+    name: "products3",
     dec: " The subject looks into the distance, showcasing a poised demeanor perfect for professional profile pictures, business portfolios, or corporate websites.",
-    profileImg:
-      "https://wallpapers.com/images/high/professional-profile-pictures-4162-x-6243-ds59e3wn0uignqdp.webp",
+    productImage:
+      "https://www.91-cdn.com/hub/wp-content/uploads/2023/01/14-inch-and-16-inch-MacBook-Pro-with-M2-Pro-and-M2-Max.jpg?tr=q-100",
   },
   {
-    name: "Shubham",
-    id: "abc1111hjsfv",
+    name: "products4",
     dec: " The subject looks into the distance, showcasing a poised demeanor perfect for professional profile pictures, business portfolios, or corporate websites.",
-    profileImg:
-      "https://wallpapers.com/images/high/professional-profile-pictures-3168-x-4752-ao04pefbccblobjh.webp",
+    productImage:
+      "https://www.91-cdn.com/hub/wp-content/uploads/2023/01/Mac-mini-with-M2-1024x643.jpg?tr=q-100",
   },
 ];
 
-export default function UsersCom() {
+export default function ProductsList() {
   return (
+    <>
       <Box
         sx={{
           marginTop:"20px",
@@ -49,10 +45,10 @@ export default function UsersCom() {
           gap: 2,
         }}
       >
-      <Button variant="contained">Add a New User</Button>
-        {users.map((e, i) => (
+      <Button variant="contained">Add New Products</Button>
+       
+        {products.map((e, i) => (
           <Card
-          key={`user${i}`}
             sx={{
               width: "90%",
               bgcolor: "#989898",
@@ -68,31 +64,26 @@ export default function UsersCom() {
               }}
             >
               <Box sx={{ display: "flex", gap: 3, alignItems: "center" }}>
-                <Avatar
-                  sx={{ width: 80, height: 80 }}
-                  src={e.profileImg}
-                ></Avatar>
+                <Avatar variant="square" sx={{ width: 80, height: 80 }} src={e.productImage}>
+                  
+                </Avatar>
                 <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    sx={{ lineHeight: "16px" }}
-                    component="div"
-                  >
-                    {e.name} <br />
-                    <span style={{ fontSize: 10 }}> {e.id}</span>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {e.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     {e.dec}
                   </Typography>
                 </CardContent>
               </Box>
-              <Box sx={{ display: "flex", gap: 1 }}>
-                <Button variant="contained">remove</Button>
-              </Box>
+              {/* <Box sx={{ display: "flex", gap: 1 }}>
+                <Button variant="contained">Accept</Button>
+                <Button variant="contained">Reject</Button>
+              </Box> */}
             </CardActionArea>
           </Card>
         ))}
       </Box>
+    </>
   );
 }
