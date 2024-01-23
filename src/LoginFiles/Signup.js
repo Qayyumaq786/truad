@@ -50,24 +50,40 @@ export default function SignUp() {
     }
 
     return (
+        <div style={{backgroundImage:"linear-gradient(to right bottom, rgb(0, 0, 153), rgba(255,0,0,1))" ,height:"100vh" ,display:"flex" ,justifyContent:"center",alignItems:"center"}}>
 
-        <Container component="main" maxWidth="xs" sx={{ boxShadow: "10px 10px 5px gray" }} >
+        <Container component="main" maxWidth="xs"   sx={{ boxShadow: "1px 1px 20px black", backgroundColor: "rgb(66, 73, 84)" , position: 'relative',borderRadius:"10px" ,color:"white" }} >
 
             <Box
                 sx={{
-                    marginTop: 15,
+                    // marginTop: 15,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     padding: "15% 0%"
                 }}
             >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <img src="https://media.licdn.com/dms/image/C4E0BAQGQTzZN8EqC9w/company-logo_200_200/0/1630642218004?e=1714003200&v=beta&t=eqAFTfpV4wyyrkNAdGjWuifp_6KR1JPfv91rCK1nssY" style={{ height: "50px" }} alt="" />
-
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign up
+               <Avatar
+            sx={{
+              m: 1,
+              bgcolor: "secondary.main",
+              width: "100px", 
+              height: "100px", 
+              "& img": {
+                width: "100%", 
+                height: "100%", 
+                objectFit: "cover",
+                borderRadius: "50%", 
+              },
+            }}
+          >
+            <img
+              src="https://media.licdn.com/dms/image/C4E0BAQGQTzZN8EqC9w/company-logo_200_200/0/1630642218004?e=1714003200&v=beta&t=eqAFTfpV4wyyrkNAdGjWuifp_6KR1JPfv91rCK1nssY"
+              alt=""
+            />
+          </Avatar>
+                <Typography component="h1" variant="h5" sx={{fontWeight:"bold"}}>
+                    Sign-Up
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                     <Grid container spacing={2}>
@@ -141,6 +157,7 @@ export default function SignUp() {
             </Box>
 
         </Container>
+        </div>
 
     );
 }
