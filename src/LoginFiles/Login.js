@@ -35,15 +35,21 @@ export default function SignIn() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
+
         event.preventDefault();
         try {
-            await firebase.auth().signInWithEmailAndPassword(formData.email, formData.password);
-            Alert('Your UserName And Password Was Right Click On Ok To Login');
+            console.log(formData.email, formData.password)
+            await firebase.auth().signInWithEmailAndPassword((formData.email), (formData.password));
+            console.log('Your UserName And Password Was Right');
             navigate("/dashboard");
 
         } catch (error) {
             console.error('Login error:', error.message);
             alert("Invalid UserName Or Password");
+            setFormData({
+                email: '',
+                password: '',
+            })
         }
     };
 
